@@ -6,7 +6,6 @@ logger            = require('morgan'),
 index             = require('./routes/index'),
 posts             = require('./routes/posts'),
 reviews             = require('./routes/reviews'),
-users             = require('./routes/users'),
 app               = express();
 
 // view engine setup
@@ -23,7 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Setting up routes
 app.use('/', index);
-app.use('/users', users);
 app.use('/posts', posts);
 app.use('/posts/:id/reviews', reviews);
 
