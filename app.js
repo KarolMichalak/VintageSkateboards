@@ -8,6 +8,7 @@ bodyParser        = require('body-parser'),
 passport          = require('passport'),
 session           = require('express-session'),
 mongoose          = require('mongoose'),
+methodOverride    = require('method-override'),
 User              = require('./models/User'),
 
 
@@ -37,6 +38,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride("_method"));
 
 //PASSPORT AND SESSIONS SETUP
 app.use(session({

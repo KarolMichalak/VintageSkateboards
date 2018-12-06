@@ -1,1 +1,16 @@
-ECHO is on.
+<h1>Edit Post</h1>
+<form action="/posts/<%= post.id%>?_method=PUT" method="POST">
+    <div>
+        <input type="text" placeholder="title" name="title"  value="<%=post.title %>">
+    </div>
+    <div>
+        <input type="text" placeholder="price" name="price" value="<%=post.price %>">
+    </div>
+    <div>
+        <textarea name="" placeholder="description" name="description"><%=post.description%></textarea>
+    </div>
+    <div>
+        <input type="text" placeholder="location" name="location" value="<%=post.location %>">
+    </div>
+    <input type="submit">
+</form>
