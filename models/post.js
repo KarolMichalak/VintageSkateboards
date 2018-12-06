@@ -9,7 +9,7 @@ const PostSchema = new Schema({
     images: [String],
     location: String,
     lat: Number,
-    lng, Number,
+    lng: Number,
     author: {
         type: Schema.Types.ObjectId,
         ref: "User"
