@@ -3,10 +3,29 @@ express           = require('express'),
 path              = require('path'),
 cookieParser      = require('cookie-parser'),
 logger            = require('morgan'),
+favicon           = require('favicon'),
+bodyParser        = require('body-parser'),
+passport          = require('passport'),
+session           = require('express-session'),
+mongoose          = require('mongoose'),
+User              = require('./models/User'),
+
+
+//require routes
 index             = require('./routes/index'),
 posts             = require('./routes/posts'),
-reviews             = require('./routes/reviews'),
+reviews           = require('./routes/reviews'),
+
 app               = express();
+require('dotenv').config();
+
+// Connect to the database
+mongoose.connect(process.env.MONGO_KEY, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("Database connected");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -14,11 +33,22 @@ app.set('view engine', 'ejs');
 
 // App configuration setup
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//PASSPORT AND SESSIONS SETUP
+app.use(session({
+  secret: 'my beautiful secret',
+  resave: false,
+  saveUninitialized: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //Setting up routes
 app.use('/', index);
