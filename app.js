@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require('http-errors'),
 express           = require('express'),
 path              = require('path'),
@@ -18,7 +19,6 @@ posts             = require('./routes/posts'),
 reviews           = require('./routes/reviews'),
 
 app               = express();
-require('dotenv').config();
 
 // Connect to the database
 mongoose.connect(process.env.MONGO_KEY, { useNewUrlParser: true });
