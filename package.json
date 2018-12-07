@@ -26,6 +26,6 @@
   },
   "devDependencies": {
     "dotenv": "^6.1.0",
-    "locus": "^2.0.0"
+    "locus": "^1.2.0"
   }
 }
