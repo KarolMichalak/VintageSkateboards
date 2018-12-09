@@ -31,6 +31,8 @@ db.once('open', function() {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+// setup public assets directory
+app.use(express.static('public'));
 
 // App configuration setup
 app.use(logger('dev'));
