@@ -19,3 +19,11 @@
     <input type="submit" value="Delete">
     </form>
 </div>
+
+<h2>Reviews</h2>
+<h3>Create a Review</h3>
+<form action="/posts/<%=post.id%>/reviews" method="POST">
+    <textarea name="review[body]" required></textarea>
+    <input type="number" name="review[rating]" min="1" max="5" step="1" required>
+    <input type="submit">
+</form>
