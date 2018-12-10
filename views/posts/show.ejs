@@ -30,7 +30,17 @@
 <!-- Displayy all reviews -->
 <% post.reviews.forEach(function(review) { %>
     <div>
+    Author: <%= review.author.username %> <br>
     <%= review.body %>
     Rating: <%= review.rating %>
     </div>
+    <div>
+        <button class="toggle-edit-form">Edit</button>
+        <form action="/posts/<%=post.id%>/reviews/<%=review.id%>?_method=PUT" method="POST" class="edit-review-form">
+            <textarea name="review[body]" required><%= review.body%></textarea>
+            <input type="number" name="review[rating]" min="1" max="5" step="1" required value="<%=review.rating%>">
+            <input type="submit" value="Update">
+        </form>
+    </div>
+    <hr>
 <% }); %>
