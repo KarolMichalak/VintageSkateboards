@@ -105,6 +105,7 @@ module.exports = {
         post.price = req.body.post.price;
         //save updated post to dbs
         post.save();
+        req.session.success = "Post edited successfully";
         res.redirect(`/posts/${post.id}`);
     }, 
     async postDestroy(req, res, next) {
@@ -113,6 +114,7 @@ module.exports = {
             await cloudinary.v2.uploader.destroy(image.public_id);
         }
         await post.remove();
+        req.session.success = "Post deleted successfully";
         res.redirect("/posts");
     }
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true }); //mergeParams give acces to the route specified in app.use (app.js)
-const { asyncErrorHandler } = require('../middleware/index');
+const { asyncErrorHandler, isReviewAuthor } = require('../middleware/index');
 const { reviewCreate,
         reviewUpdate,
         reviewDestroy
@@ -10,11 +10,9 @@ const { reviewCreate,
 router.post('/', asyncErrorHandler(reviewCreate)); 
 
 /* PUT review update /posts/:id/reviews/:review_id */
-router.put('/:review_id', asyncErrorHandler(reviewUpdate)); 
+router.put('/:review_id', isReviewAuthor, asyncErrorHandler(reviewUpdate)); 
 
 /* DELETE review destroy /posts/:id/reviews/:review_id */
-router.delete('/:review_id', (req, res, next) => {
-    res.send('DESTROY /posts/:id/reviews/:review_id');
-  }); 
+router.delete('/:review_id', isReviewAuthor, asyncErrorHandler(reviewDestroy)); 
 
 module.exports = router;
