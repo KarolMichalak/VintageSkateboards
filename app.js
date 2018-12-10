@@ -53,9 +53,17 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+
+//title middleware
+app.use(function(req, res, next) {
+  res.locals.title = "Skateboards Shop"
+  next();
+})
 
 //Setting up routes
 app.use('/', index);
@@ -77,5 +85,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

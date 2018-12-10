@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title><%= title %></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -10,6 +10,7 @@
         <link href="/stylesheets/post-show.css" rel="stylesheet">
     </head>
     <body>
+    <% include ../partials/navbar %>
     <%- body -%>
     <script>
     var post = <%- JSON.stringify(post) %>
