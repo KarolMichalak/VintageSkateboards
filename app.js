@@ -12,6 +12,8 @@ session           = require('express-session'),
 mongoose          = require('mongoose'),
 methodOverride    = require('method-override'),
 User              = require('./models/User'),
+/* seedPosts         = require('./seeds');
+seedPosts(); */
 
 
 //require routes
