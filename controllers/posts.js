@@ -11,8 +11,12 @@ cloudinary.config({
 module.exports = {
     // Post Index
     async postIndex(req, res, next) {
-        let post = await Post.find({});
-        res.render('posts/index', {post: post, title: "Posts Index"});
+        let posts = await Post.paginate({}, {
+            page: req.query.page || 1,
+            limit: 10
+        });
+        posts.page = Number(posts.page);
+        res.render('posts/index', {posts, title: "Posts Index"});
     },
     // New Post
     postNew(req, res, next) {
@@ -42,7 +46,14 @@ module.exports = {
     },
     // Post Show
     async postShow(req, res, next) {
-        let post = await Post.findById(req.params.id);
+        let post = await Post.findById(req.params.id).populate({
+        path: 'reviews',
+        options: { sort: { '_id': -1 } },
+        populate: {
+            path: 'author',
+            model: 'User'
+        }
+        });
         res.render('posts/show', {post: post})
     },
     async postEdit(req, res, next) {
@@ -98,6 +109,7 @@ module.exports = {
         post.price = req.body.post.price;
         //save updated post to dbs
         post.save();
+        req.session.success = "Post edited successfully";
         res.redirect(`/posts/${post.id}`);
     }, 
     async postDestroy(req, res, next) {
@@ -106,6 +118,7 @@ module.exports = {
             await cloudinary.v2.uploader.destroy(image.public_id);
         }
         await post.remove();
+        req.session.success = "Post deleted successfully";
         res.redirect("/posts");
     }
 }
