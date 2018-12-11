@@ -54,7 +54,8 @@ module.exports = {
             model: 'User'
         }
         });
-        res.render('posts/show', {post: post})
+        const floorRating = post.calculateAvgRating();
+        res.render('posts/show', {post: post, floorRating})
     },
     async postEdit(req, res, next) {
         let post = await Post.findById(req.params.id);
