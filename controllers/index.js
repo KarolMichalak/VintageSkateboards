@@ -1,7 +1,16 @@
 const User = require("../models/User");
+const Post = require("../models/post");
 const passport = require('passport');
+const mapBoxToken = process.env.MAPBOX_TOKEN;
 
 module.exports = {
+
+    //GET /
+    async landingPage(req, res, next) {
+        const posts = await Post.find({});
+        res.render('index', { posts, mapBoxToken, title: 'Vintage Skateboards' });
+    },
+
     // POST /register
     async postRegister(req, res, next) {
         const newUser = new User({
@@ -26,23 +35,3 @@ module.exports = {
     }
 };
 
-
-/*
-module.exports = {
-    postRegister (req, res, next) {
-        const newUser = new User({
-            username: req.body.username,
-            email: req.body.email,
-            iamge: req.body.image
-        });
-        User.register(newUser, req.body.password, (err) => {
-            if (err) {
-                console.log('error while user register!', err);
-                return next(err);
-            }
-            console.log('user registered!');
-            res.redirect('/');
-        });
-    }
-};
-*/

@@ -6,10 +6,10 @@ module.exports = {
     async reviewCreate(req, res, next) {
         //find the post by its id
         let post = await Post.findById(req.params.id).populate('reviews').exec();
-        let haveReviewd = post.reviews.filter(review => {
+        let haveReviewed = post.reviews.filter(review => {
             return review.author.equals(req.user._id);
         }).length; // checks whether current user's id is the same as one of the author's ID in the found post review and stores it in haveReviews array
-        if (haveReviewd) {
+        if (haveReviewed) {
             req.session.error = "Sorry, you can only create one review"
             return res.redirect(`/posts/${post.id}`);
         }

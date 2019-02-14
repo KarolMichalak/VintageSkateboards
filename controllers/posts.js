@@ -7,17 +7,22 @@ cloudinary.config({
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET
 });
+const mapBoxToken = process.env.MAPBOX_TOKEN;
 
 module.exports = {
-    // Post Index
-    async postIndex(req, res, next) {
-        let posts = await Post.paginate({}, {
-            page: req.query.page || 1,
-            limit: 10
-        });
-        posts.page = Number(posts.page);
-        res.render('posts/index', {posts, title: "Posts Index"});
-    },
+	// Posts Index
+	async postIndex(req, res, next) {
+		let posts = await Post.paginate({}, {
+			page: req.query.page || 1,
+			limit: 10
+		});
+		posts.page = Number(posts.page);
+		res.render('posts/index', { 
+			posts, 
+			mapBoxToken, 
+			title: 'Posts Index' 
+		});
+	},
     // New Post
     postNew(req, res, next) {
         res.render('posts/new');
