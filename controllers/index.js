@@ -11,6 +11,12 @@ module.exports = {
         res.render('index', { posts, mapBoxToken, title: 'Vintage Skateboards' });
     },
 
+    // GET /register
+
+    getRegister(req, res, next) {
+        res.render('register', {title: 'Register'});
+    },
+
     // POST /register
     async postRegister(req, res, next) {
         const newUser = new User({
@@ -18,15 +24,34 @@ module.exports = {
             email: req.body.email,
             image: req.body.image
         });
-        await User.register(newUser, req.body.password);
-        res.redirect("/");
+        let user = await User.register(newUser, req.body.password);
+        req.login(user, function(err) {
+            if (err) {
+                return next(err)
+            }
+            else {
+                req.session.success = `Welcome to Vintage Shop, ${user.username}!  `
+                res.redirect("/");
+            }
+        })
+    },
+
+    // GET /login
+    getLogin(req, res, next) {
+        res.render('login', {title: 'Login'});
     },
     // POST /login
-    postLogin(req, res, next) {
-        passport.authenticate('local', { 
-            successRedirect: '/',
-            failureRedirect: '/login'
-          })(req, res, next);
+    async postLogin(req, res, next) {
+        const { username, password } = req.body;
+        const { user, error } = await User.authenticate()(username, password);
+        if (!user && error) return next(error);
+        req.login(user, function(err) {
+            if (err) return next(err);
+            req.session.success = `Welcome back, ${username}!`
+            const redirectUrl = req.session.redirectTo || '/';
+            delete req.session.redirectTo;
+            res.redirect(redirectTo);
+        })
     },
     // GET /logout
     getLogout(req, res, next) {
