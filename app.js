@@ -6,7 +6,6 @@ path              = require('path'),
 cookieParser      = require('cookie-parser'),
 logger            = require('morgan'),
 favicon           = require('favicon'),
-bodyParser        = require('body-parser'),
 passport          = require('passport'),
 session           = require('express-session'),
 mongoose          = require('mongoose'),
@@ -24,7 +23,10 @@ reviews           = require('./routes/reviews'),
 app               = express();
 
 // Connect to the database
-mongoose.connect(process.env.MONGO_KEY, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_KEY, { 
+  useNewUrlParser: true,
+  useCreateIndex: true 
+});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -38,11 +40,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 // setup public assets directory
 app.use(express.static('public'));
-
 // App configuration setup
+/* app.use(favicon(path.join(__dirname, 'public', 'favicon.ico'))); */
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride("_method"));
