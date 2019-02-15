@@ -1,7 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const { postRegister, postLogin, getLogout, landingPage, getRegister, getLogin } = require('../controllers/index');
-const { asyncErrorHandler} = require('../middleware/index');
+const {
+  postRegister,
+  postLogin,
+  getLogout,
+  landingPage,
+  getRegister,
+  getLogin,
+  getProfile,
+  resetGetToken,
+  resetPostToken,
+  resetPass,
+  forgotPass
+} = require('../controllers/index');
+const {
+  asyncErrorHandler,
+  isLoggedIn
+} = require('../middleware/index');
 
 
 /* GET home page/Landing Page. */
@@ -23,34 +38,20 @@ router.post('/login', asyncErrorHandler(postLogin));
 router.get('/logout', getLogout);
 
 /* GET /profile */
-router.get('/profile', (req, res, next) => {
-  res.send('GET /profile');
-});
+router.get('/profile', isLoggedIn, asyncErrorHandler(getProfile));
 
-/* PUT /profile/:user_id */
-router.put('/register/:user_id', (req, res, next) => {
-  res.send('PUT /profile/:user_id');
-});
 
 /* GET /forgot */
-router.get('/forgot', (req, res, next) => {
-  res.send('GET /forgot');
-});
+router.get('/forgot', forgotPass);
 
 /* PUT /forgot */
-router.put('/forgot', (req, res, next) => {
-  res.send('PUT /forgot');
-});
+router.post('/forgot', resetPass);
 
 /* GET /reset/:token */
-router.get('/reset/:token', (req, res, next) => {
-  res.send('GET /reset/:token');
-});
+router.get('/reset/:token', resetGetToken);
 
 /* PUT /reset/:token */
-router.put('/reset/:token', (req, res, next) => {
-  res.send('PUT /reset/:token');
-});
+router.post('/reset/:token', resetPostToken);
 
 
 module.exports = router;
