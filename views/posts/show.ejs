@@ -1,6 +1,7 @@
 <% layout('layouts/post-show-layout') -%>
 <h1><%= post.title %></h1>
 <div>Price: <%= post.price %></div>
+<div>Author: <a href="/profile/<%= user.id %>"><%= user.username %></a></div>
 <div><%= post.description %></div>
 <div><%= post.location %></div>
 <div>
@@ -37,6 +38,10 @@
 </div>
 <% } %>
 
+<% if (currentUser && currentUser.id !== user.id) { %>
+		<a href="/posts/<%= post.id %>/sendEmail">Contact Seller</a>
+<%  }  %>
+
 <% if(currentUser) { %>
 <h2>Create a Review</h2>
 <form action="/posts/<%= post.id %>/reviews" method="POST">
@@ -60,7 +65,7 @@
 	<input type="submit">
 </form>
 <% } else { %>
-<h2><a href="/login?returnTo=true">Create a Review</a></h2>
+<h2><a href="/login?returnTo=true">Login to create a review</a></h2>
 <% } %>
 
 <h3>Reviews</h3>

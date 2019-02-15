@@ -71,7 +71,7 @@ app.use(function(req, res, next) {
   }; */
   res.locals.currentUser = req.user;
   // set deafult page title
-  res.locals.title = "Skateboards Shop"
+  res.locals.title = "Vintage Skateboards"
   // set succes flash message
   res.locals.success = req.session.success || '';
   delete req.session.success;

@@ -3,6 +3,9 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require('../cloudinary');
+const nodemailer = require('nodemailer')
+const User = require('../models/User')
+
 
 
 module.exports = {
@@ -57,8 +60,9 @@ module.exports = {
 				model: 'User'
 			}
 		});
+		let user = await User.findById(post.author)
 		const floorRating = post.calculateAvgRating();
-		res.render('posts/show', { post, mapBoxToken, floorRating });
+		res.render('posts/show', { post, user, mapBoxToken, floorRating });
 	},
 	// Posts Edit
 	postEdit(req, res, next) {
@@ -126,5 +130,41 @@ module.exports = {
 		await post.remove();
 		req.session.success = 'Post deleted successfully!';
 		res.redirect('/posts');
+	},
+	async postEmailForm (req, res, next) {
+		let post = await Post.findById(req.params.id).populate({
+			path: 'reviews',
+			options: { sort: { '_id': -1 } },
+			populate: {
+				path: 'author',
+				model: 'User'
+			}
+		});
+		res.render('posts/sendEmail', {post})
+	},
+
+	async postEmailSend(req, res, next) {
+		const post = await Post.findById(req.params.id)
+		const user = await User.findById(post.author)
+		async function main() {
+			let transporter = nodemailer.createTransport({
+				service: 'gmail',
+				auth: {
+					user: 'testwebappfordevelopment@gmail.com',
+					pass: process.env.GMAILPW
+				}
+				});
+				let mailOptions = {
+				from: req.user.email,
+				to: user.email,
+				subject: `User ${req.user.username} is interested in one of your VintageSkateboards!`,
+				text: `${req.body.story}\n\nDetails of the product:\nName: ${post.title} \nPrice: ${post.price} \nLocation: ${post.location} \nContact the buyer on given email: ${req.user.email}`
+				};
+				let info = await transporter.sendMail(mailOptions)
+				console.log('Message sent' + info.messageId)
+		}
+		main().catch(console.error)
+		req.session.success = "Message has been successfully."
+		res.redirect('/')
 	}
 }

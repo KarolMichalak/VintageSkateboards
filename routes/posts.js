@@ -11,7 +11,9 @@ const {
   postShow,
   postEdit,
   postUpdate,
-  postDestroy
+  postDestroy,
+  postEmailSend,
+  postEmailForm
 } = require("../controllers/posts");
 
 /* GET posts index /posts */
@@ -32,5 +34,9 @@ router.put('/:id', isLoggedIn, asyncErrorHandler(isAuthor), upload.array('images
 
 /* DELETE post destroy /posts/:id */
 router.delete('/:id', isLoggedIn, asyncErrorHandler(isAuthor), postDestroy); 
+
+router.get('/:id/sendEmail', isLoggedIn, postEmailForm)
+
+router.post('/:id/sendEmail', isLoggedIn, postEmailSend)
 
 module.exports = router;

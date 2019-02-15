@@ -1,0 +1,8 @@
+<% layout('layouts/boilerplate') -%>
+<h1>Send a message to the seller</h1>
+<form action="/posts/<%= post.id %>/sendEmail" method="POST">
+	<div>
+        <input type="text" name="story" placeholder="Description">
+    </div>
+    	<input type="submit">
+</form>

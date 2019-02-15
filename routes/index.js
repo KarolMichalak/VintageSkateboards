@@ -38,7 +38,7 @@ router.post('/login', asyncErrorHandler(postLogin));
 router.get('/logout', getLogout);
 
 /* GET /profile */
-router.get('/profile', isLoggedIn, asyncErrorHandler(getProfile));
+router.get('/profile/:id', isLoggedIn, asyncErrorHandler(getProfile));
 
 
 /* GET /forgot */
