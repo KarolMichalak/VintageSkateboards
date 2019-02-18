@@ -1,25 +1,24 @@
-<style>
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-	}
-	li {
-		display: inline;
-		padding: 5px;
-	}
-</style>
 
-<ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/posts">Posts</a></li>
+<div class="nav-container">
+
 	<% if(!currentUser) { %>
-	<li><a href="/register">Register</a></li>
-	<li><a href="/login">Login</a></li>
+	<ul class='navbar-left'>
+		<li><a class="nav_link" href="/">Home</a></li>
+		<li><a class="nav_link" href="/posts">Posts</a></li>
+	</ul>
+	<ul class='navbar-right'>
+		<li><a class="nav_link" href="/register">Register</a></li>
+		<li><a class="nav_link" href="/login">Login</a></li>
+	</ul>
 	<% } else { %>
-	<li><a href="/posts/new">New Post</a></li>
-	<li><a href="/logout">Logout</a></li>
-	<li><a href="/profile/<%=currentUser.id%>">Your profile</a></li>
-	Welcome, <%= currentUser.username %>!
+	<ul class='navbar-left'>
+		<li><a class="nav_link" href="/">Home</a></li>
+		<li><a class="nav_link" href="/posts">Posts</a></li>
+		<li><a class="nav_link" href="/posts/new">New Post</a></li>
+	</ul>
+	<ul class='navbar-right'>
+		<li><a class="nav_link" href="/logout">Logout</a></li>
+		<li><a class="nav_link" href="/profile/<%=currentUser.id%>">Your profile</a></li>
+	</ul>
 	<% } %>
-</ul>
+</div>

@@ -10,7 +10,7 @@ module.exports = {
 	// GET /
 	async landingPage(req, res, next) {
 		const posts = await Post.find({});
-		res.render('index', { posts, mapBoxToken, title: 'Surf Shop - Home' });
+		res.render('index', { posts, mapBoxToken, title: 'Vintage Skateboards' });
 	},
 	// GET /register
 	getRegister(req, res, next) {
@@ -28,7 +28,7 @@ module.exports = {
 		} catch(err) {
 			const { username, email } = req.body;
 			let error = err.message;
-			if (error.includes('duplicate') && error.includes('index: email_1 dup key')) {
+			if (error.includes('duplicate') && error.includes('email_1 dup key')) {
 				error = 'A user with the given email is already registered';
 			}
 			res.render('register', { title: 'Register', username, email, error });

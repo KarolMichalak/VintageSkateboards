@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') -%>
 
-<form action="/register" method="POST">
+<form class='register' action="/register" method="POST">
 	<div>
 		<label for="username">Username:</label>
 		<input type="text" id="username" name="username" placeholder="username" value="<%= username %>"required>
@@ -14,9 +14,9 @@
 		<input type="email" id="email" name="email" placeholder="email" value="<%=  email%>"required>
 	</div>
 	<div>
-		<label for="image">Image:</label>
-		<input type="file" id="image" name="image">
+		<input type="file" id="image" name="image" class='inputfile'>
+		<label for="image">SELECT AVATAR IMAGE</label>
 	</div>
 
-	<input type="submit">
+	<input type="submit" class='myButton' value='Register'>
 </form>
