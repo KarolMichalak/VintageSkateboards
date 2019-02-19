@@ -1,23 +1,25 @@
-<% layout('layouts/boilerplate') -%>
-<h1>Posts Index!</h1>
-<div id="map"></div>
-
-<% include ../partials/paginatePosts %>
-
-<% posts.docs.forEach(function(post) { %>
-	<div>
-		<h2><%= post.title %></h2>
-		<div>Price: <%= post.price %></div>
-		<div><%= post.description %></div>
-		<div><%= post.location %></div>
-		<div><a href="/posts/<%= post.id %>">View more</a></div>
+<% layout('layouts/post-index') -%>
+<div class='container'>
+	<div class='heading'>Find the the newest offers near your location</div>
+	<div id="map"></div>
+	<div class='heading2'>Click to see the details</div>
+	<div class='posts'>
+		<% posts.docs.forEach(function(post) { %>
+		<div class='post'>
+			<h2>Title: <%= post.title.substring(0,10) %></h2>
+			<% if (post.images && post.images.length !== 0) {  %>
+			<img src="<%= post.images[0].url %>" alt="Surf board image">
+			<% } else { %>
+			<img src="/images/blank-img.jpg" alt="Surf board image">
+			<% }; %>
+			<div>Price: <%= post.price %> $</div>
+			<div>Location: <%= post.location %></div>
+			<div><a href="/posts/<%= post.id %>">View more</a></div>
+		</div>
+	<% }); %>
 	</div>
-<% }); %>
+	<div class='pagination'>
+		<% include ../partials/paginatePosts %>
+	</div>
+</div>
 
-<% include ../partials/paginatePosts %>
-
-<script>
-	mapboxgl.accessToken = "<%= mapBoxToken %>";
-	var posts = { features: <%- JSON.stringify(posts.docs) %> };
-</script>
-<script src="/javascripts/allPostsClusterMap.js"></script>

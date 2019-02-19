@@ -1,18 +1,15 @@
 <% layout('layouts/index') -%>
 <div class='container'>
-<% include ./partials/navbar %>
 	<div class='welcome'>
 		<h1 class='heading-primary'>
 			<span class='heading-primary--main'><%= title %></span>
 			<span class='heading-primary--sub'>A place for worldwide skateboards</span>
-		</h1>
-		
+		</h1>	
 	</div>
 	<div class='steps-main'>
 		<div class='steps-header'>How it works - simple as 1, 2, 3!
 		<hr>
 		</div>
-	
 		<div class='steps-content'>	
 			<div class="step1 steps">
 				<div>1</div>
@@ -29,11 +26,5 @@
 		</div>
 	</div>
 	<div id="map"></div>
-	 <% include ./partials/footer %>
 </div>
 
-<script>
-	mapboxgl.accessToken = "<%= mapBoxToken %>";
-	var posts = { features: <%- JSON.stringify(posts) %> };
-</script>
-<script src="/javascripts/allPostsClusterMap.js"></script>

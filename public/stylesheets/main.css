@@ -18,3 +18,87 @@ body {
   background: linear-gradient(to bottom right,#fdfcfb, #e2d1c3);
   min-height: 100vh;
 }
+
+.success_message {
+    color:whitesmoke;
+    background: linear-gradient(to bottom right, #7bed9f, #25BC63);
+    position: absolute;
+    top: 0;
+    left: 33vw;
+    right: 33vw;
+    text-align: center;
+    border-radius: 1rem;
+    z-index: 100011;
+  }
+  
+  .error_message {
+    color: whitesmoke;
+    background: linear-gradient(to bottom right,#ff6b81, #ff4757);
+    position: absolute;
+    top: 0;
+    left: 33%;
+    right: 33%;
+    text-align: center;
+    border-radius: 1rem;
+    z-index: 10000011;
+  }
+
+  .nav-container {
+    background-color: #101d2c;
+    height: 5vh;
+    display: grid;
+    grid-template-columns: fit-content 1fr fit-content;
+    position: sticky;
+    top: 0;
+    z-index: 1111;
+    letter-spacing: 0.75rem;
+    width: 96vw;
+    margin-left: 2vw;
+  }
+  
+  .navbar-left {
+    grid-column: 1 / 2;
+    display: grid;
+    list-style: none;
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .navbar-right {
+    grid-column: 4 / 5;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+    list-style: none;
+  }
+  
+  .nav_link:link, .nav_link:visited {
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.5s;
+   }
+  
+   .nav_link:hover {
+     color: #fdc830;
+   }
+
+   .footer {
+
+    background-color: black;
+    color: white;
+    font-size: 200%;
+    bottom: 0;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 10vh;
+    width: 96vw;
+    margin-left: 2vw;
+    letter-spacing: 0.75rem;
+    font-size: 1.75rem;
+  }

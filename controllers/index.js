@@ -112,8 +112,9 @@ module.exports = {
 			});
 		  }
 		], function(err) {
-		  if (err) return next(err);
-		  res.redirect('/forgot');
+			if (err) return next(err);
+			req.session.success = "An email has been sent to you"
+		  res.redirect('/');
 		});
 	  },
 	// Creating token for the user

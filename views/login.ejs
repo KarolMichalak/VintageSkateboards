@@ -1,15 +1,16 @@
-<% layout('layouts/login') -%>
+<% layout('layouts/form') -%>
 <div class='container'>
-<form action="/login" method="POST">
-	<div>
-		<label for="username">Username:</label>
-		<input type="text" id="username" name="username" placeholder="username" required>
-	</div>
-	<div>
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password" placeholder="password" required>
-	</div>
-	<a href='/forgot'>Forgot password?</a>
-	<input type="submit">
-	</div>
+	<form action="/login" method="POST" class='form'>
+		<h3>Please enter your username and pasword</h3>
+		<div>
+			<label for="username">Username:</label>
+			<input type="text" id="username" name="username" placeholder="username" required>
+		</div>
+		<div>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" placeholder="password" required>
+		</div>
+		<input type="submit" class='myButton' value='Login'>
+		<a href='/forgot'>Forgot password?</a>
+		</div>
 </form>
