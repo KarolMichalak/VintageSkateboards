@@ -1,7 +1,10 @@
 <% layout('layouts/post-show-layout') -%>
 <h1><%= post.title %></h1>
 <div>Price: <%= post.price %></div>
+<% if (user && user.username) { %>
 <div>Author: <a href="/profile/<%= user.id %>"><%= user.username %></a></div>
+ <% } %>
+
 <div><%= post.description %></div>
 <div><%= post.location %></div>
 <div>

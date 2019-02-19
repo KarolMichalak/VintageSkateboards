@@ -1,0 +1,20 @@
+/* HTML sctucture setup */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; 
+}
+
+html {
+
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
+body {
+  background: linear-gradient(to bottom right,#fdfcfb, #e2d1c3);
+  min-height: 100vh;
+}

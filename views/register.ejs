@@ -1,6 +1,10 @@
-<% layout('layouts/boilerplate') -%>
+<% layout('layouts/register') -%>
+
+<div class='container'>
+<% include ./partials/navbar %>
 
 <form class='register' action="/register" method="POST">
+<h3>Please enter essential information and enter the world of Vintage Skateboards!</h3>
 	<div>
 		<label for="username">Username:</label>
 		<input type="text" id="username" name="username" placeholder="username" value="<%= username %>"required>
@@ -20,3 +24,6 @@
 
 	<input type="submit" class='myButton' value='Register'>
 </form>
+
+	<% include ./partials/footer %>
+</div>

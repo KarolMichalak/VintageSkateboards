@@ -1,0 +1,162 @@
+/* HTML sctucture setup */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; 
+}
+
+html {
+
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
+body {
+  background: linear-gradient(to bottom right,#fdfcfb, #e2d1c3);
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 5vh 85vh 10vh;
+    grid-row-gap: 2rem;
+    grid-template-columns: 2vw 30vw 56vw 10vw 2vw;
+}
+
+
+.nav-container {
+  background-color: #101d2c;
+  grid-row: 1 / 1;
+  grid-column: 2 / 5;
+  display: grid;
+  grid-template-columns: fit-content 1fr fit-content;
+  position: sticky;
+  top: 0;
+  z-index: 1111;
+  letter-spacing: 0.75rem;
+}
+
+.navbar-left {
+  grid-column: 1 / 2;
+  display: grid;
+  list-style: none;
+  grid-auto-flow: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.navbar-right {
+  grid-column: 4 / 5;
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: center;
+  align-items: center;
+  list-style: none;
+}
+
+.nav_link:link, .nav_link:visited {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  transition: color 0.5s;
+ }
+
+ .nav_link:hover {
+   color: #fdc830;
+ }
+
+ .register {
+     grid-row: 2/2;
+     grid-column: 2/5;
+     justify-self: center;
+     align-self: center;
+     width: 60%;
+     margin: 0 auto;
+   }
+   h3 {
+       text-align: center;
+       font-size: 300%;
+       font-weight: 500;
+       padding-bottom: 5rem;
+   }
+   
+   .register label {
+     font-size: 200%;
+   }
+   
+   input[type=text],
+   input[type=email],
+   input[type=password] {
+     width: 100%;
+     padding: 0.7rem;
+     margin: 1rem;
+     border-radius: 0.3rem;
+     border: 0.1rem solid #ccc;
+   }
+   
+   .myButton {
+     margin-top: 1rem;
+       background-color:transparent;
+       -moz-border-radius:28px;
+       -webkit-border-radius:28px;
+       border-radius:28px;
+       border:1px solid #000000;
+       display:inline-block;
+       cursor:pointer;
+       color:#000000;
+       font-family:Arial;
+       font-size:17px;
+       padding:16px 31px;
+       text-decoration:none;
+   }
+   .myButton:hover {
+       background-color:transparent;
+   }
+   .myButton:active {
+       position:relative;
+       top:1px;
+   }
+   
+   .inputfile {
+       width: 0.1px;
+       height: 0.1px;
+       opacity: 0;
+       overflow: hidden;
+       position: absolute;
+       z-index: -1;
+   }
+   
+   .inputfile + label {
+     font-size: 1.25em;
+     font-weight: 700;
+     color: white;
+     background-color: black;
+     display: inline-block;
+   }
+   
+   .inputfile:focus + label,
+   .inputfile + label:hover {
+     background-color: red;
+   }
+   
+   
+   *:focus {outline: none;}
+
+
+
+ .footer {
+    grid-row: 3 / 3;
+    grid-column: 2 / 5;
+    background-color: black;
+    color: white;
+    font-size: 200%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    
+  }
+  
