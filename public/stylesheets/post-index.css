@@ -92,8 +92,7 @@
 
 
   .post {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+
     display: grid;
     grid-row-gap:1rem;
     grid-template-rows: auto minmax(15rem, min-content) repeat(3, auto);
