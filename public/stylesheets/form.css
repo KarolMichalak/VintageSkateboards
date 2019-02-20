@@ -116,3 +116,17 @@
   .form a:hover {
       color: #fdc830;
   }
+
+  .images-edit {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .images-edit div {
+    margin: 1rem 1rem 1rem 1rem;
+  }
+
+  .input-button {
+    margin-bottom: 3rem;
+  }
