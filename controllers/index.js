@@ -60,7 +60,7 @@ module.exports = {
 	},
 	//GET /profile
 	async getProfile(req, res, next) {
-		const posts = await Post.find().where('author').equals(req.user._id).limit(10).exec();
+		const posts = await Post.find().where('author').equals(req.user._id).exec();
 		res.render('profile', { posts });
 	},
 	 // Show the form for the password reset

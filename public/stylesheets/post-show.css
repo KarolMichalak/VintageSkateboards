@@ -1,14 +1,11 @@
 .container {
   display: grid;
-  grid-template-rows: 5vh 5vh auto 5vh auto 5vh;
+  grid-template-rows: 5vh 5vh minmax(50rem, auto) 5vh auto 5vh;
   grid-template-columns: 2vw auto 10vw 46vw 2vw;
   grid-row-gap: 5rem;
   justify-content: center;
   align-content: center;
 }
-
-
-
 
 .image-header {
   grid-row: 2;
@@ -201,6 +198,10 @@ font-family: 'Open Sans', sans-serif;
 
 .edit-review-form {
   display: none;
+}
+
+#left-button {
+ margin-right: 1rem;
 }
 
 @media (max-width: 768px) {

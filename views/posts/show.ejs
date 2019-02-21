@@ -73,7 +73,7 @@
 				<% if (currentUser && post.author.equals(currentUser._id)) { %>
 				<div>
 					<a href="/posts/<%= post.id %>/edit">
-						<button class='myButton'>Edit Post</button>
+						<button id='left-button' class='myButton'>Edit Post</button>
 					</a>
 				</div>
 				<div>
@@ -89,7 +89,9 @@
 	<div class='review-header'>Reviews
 	</div>
 	<div class='reviews'>
-		
+		<% if (!post.reviews || post.reviews.length === 0) {%>
+		<div style="text-align: center; font-size: 200%;">No reviews yet</div>
+		<% } else {%>
 		<!-- display all reviews -->
 		<% post.reviews.forEach(function(review) { %>
 		<div>
@@ -100,12 +102,11 @@
 			</div>
 			<% if(currentUser && review.author.equals(currentUser._id)) { %>
 			<div class='buttons-right'>
-				<button class="myButton">Edit</button>
+				<button id='left-button' class="myButton">Edit</button>
 				<form action="/posts/<%= post.id %>/reviews/<%= review.id %>?_method=PUT" method="POST" class="edit-review-form">
 					<textarea name="review[body]" required><%= review.body %></textarea>
 					<fieldset class="starability-basic">
 					<legend>Rating:</legend>
-					<button class="clear-rating" type="button">Clear Rating</button>
 					<input type="radio" id="edit-rate0" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
 					<input type="radio" id="edit-rate1" name="review[rating]" value="1" />
 					<label for="edit-rate1" title="Terrible">1 star</label>
@@ -130,5 +131,6 @@
 			<% } %>
 		</div>
 		<% }); %>
+		<% };%>
 	</div>
 </div>

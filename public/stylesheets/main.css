@@ -17,6 +17,7 @@ html {
 body {
   background: linear-gradient(to bottom right,#fdfcfb, #e2d1c3);
   min-height: 100vh;
+  position: relative;
 }
 
 .success_message {
@@ -105,6 +106,7 @@ body {
     margin-left: 2vw;
     letter-spacing: 0.75rem;
     font-size: 1.75rem;
+    position:absolute;
   }
 
   @media (max-width: 768px) {
