@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../models/user");
 const Post = require("../models/post");
 const passport = require('passport');
 const mapBoxToken = process.env.MAPBOX_TOKEN

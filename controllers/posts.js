@@ -4,7 +4,7 @@ const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require('../cloudinary');
 const nodemailer = require('nodemailer')
-const User = require('../models/User')
+const User = require('../models/user')
 
 
 

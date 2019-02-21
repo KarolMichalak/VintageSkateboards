@@ -1,5 +1,5 @@
 const Review = require('../models/review');
-const User = require('../models/User')
+const User = require('../models/user')
 const Post = require('../models/post');
 module.exports = {
     asyncErrorHandler: (fn) => (req, res, next) => {

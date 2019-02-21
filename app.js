@@ -10,7 +10,7 @@ passport          = require('passport'),
 session           = require('express-session'),
 mongoose          = require('mongoose'),
 methodOverride    = require('method-override'),
-User              = require('./models/User'),
+User              = require('./models/user'),
 
 //require routes
 index             = require('./routes/index'),
