@@ -1,14 +1,27 @@
-<% layout('layouts/boilerplate') -%>
-<h1>New Post!</h1>
-
-<form action="/posts" method="POST" enctype="multipart/form-data">
-	<div><input type="text" name="post[title]" placeholder="Title"></div>
-	<div><input type="number" name="post[price]" step=".01" placeholder="Price"></div>
-	<div>
-		<input type="file" accept="images/*" name="images" multiple />
-	</div>
-	<div><textarea name="post[description]" placeholder="Description"></textarea></div>
-	<div><input type="text" name="post[location]" placeholder="Location"></div>
-
-	<input type="submit">
-</form>
+<% layout('layouts/form') -%>
+<div class='container'>
+	<form action="/posts" method="POST" enctype="multipart/form-data" class='form'>
+		<h3>Enter information to add new ofert!</h3>
+		<div>
+			<label for="post[title]">Title</label>
+			<input type="text" name="post[title]" placeholder="Title">
+		</div>
+		<div>
+			<label for="post[price]">Price</label>
+			<input type="number" name="post[price]" step=".01" placeholder="Price">
+		</div>
+		<div>
+			<label for="post[description]">Description</label>
+			<textarea name="post[description]" placeholder="Description"></textarea>
+		</div>
+		<div>
+			<label for="post[location]">Location</label>
+			<input type="text" name="post[location]" placeholder="Location" required>
+		</div>
+		<div>
+			<input type="file" accept="images/*" name="images" id='images' multiple class='inputfile' required/>
+			<label for="images">Select Images</label>
+		</div>
+		<input type="submit" class='myButton'>
+	</form>
+</div>

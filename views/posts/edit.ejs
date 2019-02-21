@@ -1,25 +1,38 @@
-<% layout('layouts/boilerplate') -%>
-<h1>Edit Post!</h1>
+<% layout('layouts/form') -%>
 
-<form action="/posts/<%= post.id %>?_method=PUT" method="POST" id="postEditForm" enctype="multipart/form-data">
-	<div><input type="text" name="post[title]" placeholder="Title" value="<%= post.title  %>"></div>
-	<div><input type="number" name="post[price]" step=".01" placeholder="Price" value="<%= post.price  %>"></div>
-	<div>
-		<input type="file" id="imageUpload" accept="images/*" name="images" multiple />
+<div class='container'>
+	<form action="/posts/<%= post.id %>?_method=PUT" method="POST" class='form' enctype="multipart/form-data">
+		<h3>Edit information</h3>
 		<div>
-		<% post.images.forEach(function(image, i) { %>
-			<img src="<%= image.url %>" width="100px" />
-			<label for="image<%= i %>">Delete?</label>
-			<input type="checkbox" name="deleteImages[]" class="imageDeleteCheckbox" id="image<%= i %>" value="<%= image.public_id %>">
-		<% }); %>
+			<label for="post[title]">Title</label>
+			<input type="text" name="post[title]" placeholder="Title" value="<%= post.title  %>">
 		</div>
-	</div>
-	<div>
-		<textarea name="post[description]" placeholder="Description"><%= post.description  %></textarea>
-	</div>
-	<div><input type="text" name="post[location]" placeholder="Location" value="<%= post.location  %>"></div>
-
-	<input type="submit">
-</form>
-
+		<div>
+			<label for="post[price]">Price</label>
+			<input type="number" name="post[price]" step=".01" placeholder="Price" value="<%= post.price  %>">
+		</div>
+		<div class='input-button'>
+			<input type="file" id="imageUpload" accept="images/*" name="images" multiple class='inputfile'/>
+			<label for="images">Select Images</label>
+		</div>
+		<div class='images-edit'>
+			<% post.images.forEach(function(image, i) { %>
+			<div>
+				<img src="<%= image.url %>" width="100px" />
+				<label for="image<%= i %>">Check to delete an image</label>
+				<input type="checkbox" name="deleteImages[]" class="imageDeleteCheckbox" id="image<%= i %>" value="<%= image.public_id %>">
+			</div>
+			<% }); %>
+		</div>
+		<div>
+			<label for="post[description]">Description</label>
+			<textarea name="post[description]" placeholder="Description"><%= post.description  %></textarea>
+		</div>
+		<div>
+			<label for="post[location]">Location</label>
+			<input type="text" name="post[location]" placeholder="Location" value="<%= post.location  %>">
+		</div>
+		<input type="submit" class='myButton'>
+	</form>
+</div>
 <script src="/javascripts/post-edit.js"></script>

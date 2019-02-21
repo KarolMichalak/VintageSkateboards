@@ -9,7 +9,6 @@ const UserSchema = new Schema({
         unique: true,
         required: true
     },
-    image: String,
     resetPasswordToken: String,
     resetPasswordExpires: Date,
 });

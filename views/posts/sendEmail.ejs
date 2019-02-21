@@ -1,8 +1,12 @@
-<% layout('layouts/boilerplate') -%>
-<h1>Send a message to the seller</h1>
-<form action="/posts/<%= post.id %>/sendEmail" method="POST">
+<% layout('layouts/form') -%>
+<div class='container'>
+<form action="/posts/<%= post.id %>/sendEmail" method="POST" class='form'>
+<h3>Send a message to the seller</h3>
 	<div>
-        <input type="text" name="story" placeholder="Description">
+        <label for='story'>Message</label>
+		<textarea name="story" placeholder="Message"></textarea>
     </div>
-    	<input type="submit">
+    	<input type="submit" class='myButton'>
 </form>
+</div>
+

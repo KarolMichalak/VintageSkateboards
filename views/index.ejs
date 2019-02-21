@@ -1,10 +1,30 @@
-<% layout('layouts/boilerplate') -%>
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
-<div id="map"></div>
+<% layout('layouts/index') -%>
+<div class='container'>
+	<div class='welcome'>
+		<h1 class='heading-primary'>
+			<span class='heading-primary--main'><%= title %></span>
+			<span class='heading-primary--sub'>A place for worldwide skateboards</span>
+		</h1>	
+	</div>
+	<div class='steps-main'>
+		<div class='steps-header'>How it works - simple as 1, 2, 3!
+		<hr>
+		</div>
+		<div class='steps-content'>	
+			<div class="step1 steps">
+				<div>1</div>
+				<p>Search the skateboards listed by people all around the world.</p>
+			</div>
+			<div class="step2 steps">
+				<div>2</div>
+				<p>Find skateboard of your dreams near your location and learn all the details.</p>
+			</div>
+			<div class="step3 steps">
+				<div>3</div>
+				<p>Contact the seller, setup a price and enjoy the ride!</p>
+			</div>
+		</div>
+	</div>
+	<div id="map"></div>
+</div>
 
-<script>
-	mapboxgl.accessToken = "<%= mapBoxToken %>";
-	var posts = { features: <%- JSON.stringify(posts) %> };
-</script>
-<script src="/javascripts/allPostsClusterMap.js"></script>

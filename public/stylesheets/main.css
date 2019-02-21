@@ -1,0 +1,151 @@
+/* HTML sctucture setup */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; 
+}
+
+html {
+
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
+body {
+  background: linear-gradient(to bottom right,#fdfcfb, #e2d1c3);
+  min-height: 100vh;
+  position: relative;
+}
+
+.success_message {
+    color:whitesmoke;
+    background: linear-gradient(to bottom right, #7bed9f, #25BC63);
+    position: absolute;
+    top: 0;
+    left: 33vw;
+    right: 33vw;
+    text-align: center;
+    border-radius: 1rem;
+    z-index: 100011;
+  }
+  
+  .error_message {
+    color: whitesmoke;
+    background: linear-gradient(to bottom right,#ff6b81, #ff4757);
+    position: absolute;
+    top: 0;
+    left: 33%;
+    right: 33%;
+    text-align: center;
+    border-radius: 1rem;
+    z-index: 10000011;
+  }
+
+  .nav-container {
+    background-color: #101d2c;
+    height: 5vh;
+    display: grid;
+    grid-template-columns: fit-content 1fr fit-content;
+    position: sticky;
+    top: 0;
+    z-index: 1111;
+    letter-spacing: 0.75rem;
+    width: 96vw;
+    margin-left: 2vw;
+  }
+
+
+  
+  .navbar-left {
+    grid-column: 1 / 2;
+    display: grid;
+    list-style: none;
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .navbar-right {
+    grid-column: 4 / 5;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+    list-style: none;
+  }
+  
+  .nav_link:link, .nav_link:visited {
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.5s;
+   }
+
+
+  
+   .nav_link:hover {
+     color: #fdc830;
+   }
+
+   .footer {
+
+    background-color: black;
+    color: white;
+    font-size: 200%;
+    bottom: 0;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 10vh;
+    width: 96vw;
+    margin-left: 2vw;
+    letter-spacing: 0.75rem;
+    font-size: 1.75rem;
+    position:absolute;
+  }
+
+  @media (max-width: 768px) {
+    .nav_link:link, .nav_link:visited {
+      font-size: 0.75rem;
+    }
+    .footer {
+      font-size: 0.75rem;
+      letter-spacing: 0.5rem;
+    }
+
+    .nav-container {
+      background-color: #101d2c;
+      height: 5vh;
+      display: grid;
+
+      grid-template-columns: fit-content 1fr fit-content;
+      position: sticky;
+      top: 0;
+      z-index: 1111;
+      letter-spacing: 0.75rem;
+      width: 96vw;
+      margin-left: 2vw;
+    } 
+    .navbar-left {
+
+      display: grid;
+      list-style: none;
+      grid-auto-flow: row;
+      justify-items: center;
+      align-items: center;
+    }
+    
+    .navbar-right {
+
+      display: grid;
+      grid-auto-flow: row;
+      justify-items: center;
+      align-items: center;
+      list-style: none;
+    }
+  }

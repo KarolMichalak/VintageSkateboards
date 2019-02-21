@@ -163,7 +163,7 @@ module.exports = {
 				let info = await transporter.sendMail(mailOptions)
 				console.log('Message sent' + info.messageId)
 		}
-		main().catch(console.error)
+		main();
 		req.session.success = "Message has been successfully."
 		res.redirect('/')
 	}

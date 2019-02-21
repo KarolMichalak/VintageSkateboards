@@ -1,0 +1,132 @@
+.container {
+    display: grid;
+    grid-template-rows: 5vh 85vh 10vh;
+    grid-row-gap: 2rem;
+    grid-template-columns: 2vw 20vw 56vw 20vw 2vw;
+}
+
+
+ .form {
+     grid-row: 2/2;
+     grid-column: 3/4;
+     justify-self: center;
+     align-self: center;
+     width: 60%;
+     margin: 0 auto;
+   }
+   h3 {
+       text-align: center;
+       font-size: 300%;
+       font-weight: 500;
+       padding-bottom: 5rem;
+   }
+   
+   .form label {
+     font-size: 200%;
+   }
+   
+   input[type=text],
+   input[type=email],
+   input[type=password] {
+     width: 100%;
+     padding: 0.7rem;
+     margin: 1rem;
+     border-radius: 0.3rem;
+     border: 0.1rem solid #ccc;
+   }
+   
+   textarea {
+    outline: none;
+    overflow: auto;
+    width: 100%;
+    padding: 0.7rem;
+    margin: 1rem;
+    border-radius: 0.3rem;
+    border: 0.1rem solid #ccc;
+  }
+
+   input[type=number] {
+       width: 100%;
+       padding: 0.7rem;
+       margin: 1rem;
+       border-radius: 0.3rem;
+       border: 0.1rem solid #ccc;
+   }
+
+   .myButton {
+     margin-top: 1rem;
+       background-color:transparent;
+       -moz-border-radius:28px;
+       -webkit-border-radius:28px;
+       border-radius:28px;
+       border:1px solid #000000;
+       display:inline-block;
+       cursor:pointer;
+       color:#000000;
+       font-family:Arial;
+       font-size:17px;
+       padding:16px 31px;
+       text-decoration:none;
+       transition: background-color 0.5s;
+      }
+    
+    .myButton:hover {
+      background-color: #fdc830;
+    }
+   .myButton:active {
+       position:relative;
+       top:0.1rem;
+   }
+   
+   .inputfile {
+       width: 2rem;
+       height: 3rem;
+       opacity: 0;
+       overflow: hidden;
+       position: absolute;
+       z-index: -1;
+       transition: color 0.5s;
+   }
+   
+   .inputfile + label {
+     font-size: 200%;
+     padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+     font-weight: 700;
+     color: white;
+     background-color: black;
+     display: inline-block;
+   }
+   
+   .inputfile:focus + label,
+   .inputfile + label:hover {
+     color:#fdc830;
+   }
+   
+   *:focus {outline: none;}
+
+   .form a {
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    transition: color 0.5s;
+    margin-left: 3rem;
+  }
+
+  .form a:hover {
+      color: #fdc830;
+  }
+
+  .images-edit {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .images-edit div {
+    margin: 1rem 1rem 1rem 1rem;
+  }
+
+  .input-button {
+    margin-bottom: 3rem;
+  }

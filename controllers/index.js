@@ -10,7 +10,7 @@ module.exports = {
 	// GET /
 	async landingPage(req, res, next) {
 		const posts = await Post.find({});
-		res.render('index', { posts, mapBoxToken, title: 'Surf Shop - Home' });
+		res.render('index', { posts, mapBoxToken, title: 'Vintage Skateboards' });
 	},
 	// GET /register
 	getRegister(req, res, next) {
@@ -28,7 +28,7 @@ module.exports = {
 		} catch(err) {
 			const { username, email } = req.body;
 			let error = err.message;
-			if (error.includes('duplicate') && error.includes('index: email_1 dup key')) {
+			if (error.includes('duplicate') && error.includes('email_1 dup key')) {
 				error = 'A user with the given email is already registered';
 			}
 			res.render('register', { title: 'Register', username, email, error });
@@ -60,7 +60,7 @@ module.exports = {
 	},
 	//GET /profile
 	async getProfile(req, res, next) {
-		const posts = await Post.find().where('author').equals(req.user._id).limit(10).exec();
+		const posts = await Post.find().where('author').equals(req.user._id).exec();
 		res.render('profile', { posts });
 	},
 	 // Show the form for the password reset
@@ -112,8 +112,9 @@ module.exports = {
 			});
 		  }
 		], function(err) {
-		  if (err) return next(err);
-		  res.redirect('/forgot');
+			if (err) return next(err);
+			req.session.success = "An email has been sent to you"
+		  res.redirect('/');
 		});
 	  },
 	// Creating token for the user

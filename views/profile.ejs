@@ -1,11 +1,19 @@
-<% layout('layouts/boilerplate') -%>
-
-<h1><%= currentUser.username %>'s Profile</h1>
-
-<p>Recent Posts:</p>
-
-<% posts.forEach(function(post) { %>
-<div>
-	<a href="/posts/<%= post.id %>"><%= post.title %></a>
+<% layout('layouts/profile') -%>
+<div class='container'>
+	<div class='header'>Here is the list of yout posts</div>
+	<div class='posts'>
+		<% posts.forEach(function(post) { %>
+		<div class='post'>
+			<h2>Title: <%= post.title.substring(0,10) %></h2>
+			<% if (post.images && post.images.length !== 0) {  %>
+			<img src="<%= post.images[0].url %>" alt="Surf board image">
+			<% } else { %>
+			<img src="/images/blank-img.jpg" alt="Surf board image">
+			<% }; %>
+			<div>Price: <%= post.price %> $</div>
+			<div>Location: <%= post.location %></div>
+			<div><a href="/posts/<%= post.id %>">View more</a></div>
+		</div>
+	<% }); %>
+	</div>
 </div>
-<% }); %>
