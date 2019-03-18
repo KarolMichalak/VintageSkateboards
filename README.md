@@ -1,4 +1,4 @@
-# This is a demo application for employment purposes. 
+# This is a portfolio project of a website VintageSkateboards build using with Node, Express and MongoDB. 
 This is mainly a backend application with minimal frontend implementation using mainly CSS grid and some Javascript. App is hosted on heroku: 
 
 Main features:
@@ -12,3 +12,5 @@ Main features:
 - Localization via Mapbox;
 - email sending as orders system;
 - Image upload with multer and cloudinary;
+
+### Visit website here: https://vintage-skateboards.herokuapp.com/
