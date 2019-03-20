@@ -1,5 +1,5 @@
 # This is a portfolio project of a website VintageSkateboards build using with Node, Express and MongoDB. 
-This is mainly a backend application with minimal frontend implementation using mainly CSS grid and some Javascript. App is hosted on heroku: 
+This is mainly a backend application with minimal frontend implementation using mainly CSS grid and some Javascript. App is hosted on heroku.
 
 Main features of project:
 - Node with Express as backend server;
